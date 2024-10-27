@@ -2,25 +2,39 @@ package oldshelf;
 
 public class OldSelection {
 
-	// TODO: Complete this method.
-	/**
-	 * 
-	 * @param o object
-	 * returns if o is not a book, returns empty string, if Comic, returns title, of Fiction
-	 * returns name, and if TextBook, returns subject.
-	 */
 	public static String getAgeOrTitle(Object o) {
 		
 		if (o instanceof Book) {
+			if(o instanceof Comic)
+			{
+				return ((Comic)o).get_title();
+			}
+			else if(o instanceof Fiction)
+			{
+				return ((Fiction)o).get_name();
+			}
+			else if(o instanceof TextBook)
+			{
+				return ((TextBook)o).get_subject();
+			}
+			else 
+			  return null;
 			
 		}
 		return null;
 	}
 
 	public static void main(String[] args) {
+		TextBook tb = new TextBook("OOPS");
+		Comic cb = new Comic("Superman: The superhero",25);
+		Fiction fb = new Fiction("Harry POtter ",FictionType.Comedy);
 		
-		// TODO: Write a test code here and execute and text.
-		TextBook t = new TextBook();
+		System.out.println(tb.toString() + "\n");
+		System.out.println(cb.toString() + "\n");
+		System.out.println(fb.toString() + "\n");
 		
+		System.out.println("getting  getAgeorTitle for Textbook : " + getAgeOrTitle(tb) + "\n");
+		System.out.println("getting  getAgeorTitle for Comic: " + getAgeOrTitle(cb) + "\n");
+		System.out.println("getting  getAgeorTitle for Fiction : " + getAgeOrTitle(fb) + "\n");
 	}
 }
